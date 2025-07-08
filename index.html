@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendaftaran PDP KESAN Angkatan 12</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+    header {
+      background-color: #f9b233; /* kuning */
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border: 3px solid #6abf4b; /* hijau */
+      border-radius: 1rem;
+    }
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 2px solid #ffa500; /* oren */
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #6abf4b;
+      color: #fff;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 1rem auto;
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo KESAN" class="logo" id="logo" />
+    Pendaftaran Calon Peserta PDP KESAN Angkatan 12
+  </header>  <div class="container">
+    <form id="formPendaftaran">
+      <label>Nama Lengkap</label>
+      <input type="text" id="nama" required /><label>Tempat, Tanggal Lahir</label>
+  <input type="text" id="ttl" required />
+
+  <label>Jenis Kelamin</label>
+  <select id="jk" required>
+    <option value="">-- Pilih --</option>
+    <option value="Laki-laki">Laki-laki</option>
+    <option value="Perempuan">Perempuan</option>
+  </select>
+
+  <label>Alamat</label>
+  <textarea id="alamat" rows="3" required></textarea>
+
+  <label>Asal Sekolah</label>
+  <input type="text" id="asal" required />
+
+  <label>No. HP Aktif (WA)</label>
+  <input type="text" id="hp" required />
+
+  <label>Akun Instagram</label>
+  <input type="text" id="ig" required />
+
+  <label>Alasan Mengikuti PDP</label>
+  <textarea id="alasan" rows="3" required></textarea>
+
+  <button type="submit">Kirim ke WhatsApp</button>
+</form>
+
+  </div>  <script>
+    const form = document.getElementById("formPendaftaran");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nama = document.getElementById("nama").value.trim();
+      const ttl = document.getElementById("ttl").value.trim();
+      const jk = document.getElementById("jk").value;
+      const alamat = document.getElementById("alamat").value.trim();
+      const asal = document.getElementById("asal").value.trim();
+      const hp = document.getElementById("hp").value.trim();
+      const ig = document.getElementById("ig").value.trim();
+      const alasan = document.getElementById("alasan").value.trim();
+
+      if (!nama || !ttl || !jk || !alamat || !asal || !hp || !ig || !alasan) {
+        alert("Harap lengkapi semua data sebelum mengirimkan.");
+        return;
+      }
+
+      const pesan = `Pendaftaran PDP KESAN Angkatan 12%0A%0A` +
+        `Nama: ${nama}%0A` +
+        `TTL: ${ttl}%0A` +
+        `Jenis Kelamin: ${jk}%0A` +
+        `Alamat: ${alamat}%0A` +
+        `Asal Sekolah: ${asal}%0A` +
+        `No HP: ${hp}%0A` +
+        `Instagram: ${ig}%0A` +
+        `Alasan PDP: ${alasan}%0A%0A` +
+        `📌 Link Grup WA: https://chat.whatsapp.com/J4Pdpfhw8vYBQKRCFZEoyq?mode=ac_t`; // ganti link grup
+
+      window.open(`https://wa.me/6283856272646?text=${pesan}`);
+    });
+  </script></body>
+</html>
